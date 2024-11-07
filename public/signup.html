@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.5.0/remixicon.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Cadastro</title>
+    <style>
+        body {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="toggle-container">
+        <i class="ri-sun-line active" id="sun"></i>
+        <i class="ri-moon-line" id="moon"></i>
+    </div>
+    
+    <div class="form-container">
+        <h1>Cadastro</h1>
+        <div class="form-group">
+            <label for="nome">Nome</label>
+            <input type="text" placeholder="Digite seu Nome" id="nome" required>
+            <i class="ri-user-line"></i>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" placeholder="Digite seu Email" id="email" required>
+            <i class="ri-mail-line"></i>
+        </div>
+        <div class="form-group">
+            <label for="tel">telefone</label>
+            <input type="tell" placeholder="Digite seu Telefone" id="tel" required>
+            <i class="ri-phone-line"></i>
+        </div>
+        <div class="form-group">
+            <label for="senha">Senha</label>
+            <input type="password" placeholder="Digite sua Senha" id="senha" required>
+            <i class="ri-lock-line"></i>
+        </div>
+
+        <div class="forgot">
+            <p>Já tem uma conta?</p>
+            <a href="./">Faça Login</a>
+        </div>
+
+        <div class="btns">
+            <button type="button" onclick="Register()">Cadastre-se</button>
+        </div>
+    </div>
+
+    <script>
+        // Função para verificar a validade do campo de email
+        document.getElementById('email').addEventListener('input', function() {
+            const emailField = document.getElementById('email');
+            const forgotButton = document.querySelector('.invisible');
+
+            if (emailField.validity.valid) {
+                // Torna o botão visível e habilitado
+                forgotButton.classList.add('visible');
+                forgotButton.classList.remove('disabled');
+            } else {
+                // Deixa o botão invisível ou desabilitado
+                forgotButton.classList.remove('visible');
+                forgotButton.classList.add('disabled');
+            }
+        });
+
+        const sunToggle = document.getElementById('sun');
+        const moonToggle = document.getElementById('moon');
+
+        sunToggle.addEventListener('click', () => {
+            let isSun = sunToggle.classList.toggle('active');
+            if(isSun) {
+                
+            }
+        })
+    </script>
+</body>
+</html>

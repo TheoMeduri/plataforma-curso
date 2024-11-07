@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.5.0/remixicon.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+        apiKey: "AIzaSyDXp5oWsLhBPCfSN53IPtzQtdKYYuax46s",
+        authDomain: "plataforma-de-curso-d46bb.firebaseapp.com",
+        projectId: "plataforma-de-curso-d46bb",
+        storageBucket: "plataforma-de-curso-d46bb.firebasestorage.app",
+        messagingSenderId: "814557784424",
+        appId: "1:814557784424:web:a35e8e1ab62d1cb8504edd"
+        };
+
+        // Initialize Firebase
+       firebase.initializeApp(firebaseConfig);
+
+       firebase.auth().signInWithEmailAndPassoword().then(response => {
+
+       })
+    </script>
+    <title>Login</title>
+    <style>
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="form-container">
+        <h1>Login</h1>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" placeholder="Digite seu Email" id="email" required>
+            <i class="ri-mail-line"></i>
+        </div>
+        <div class="form-group">
+            <label for="senha">Senha</label>
+            <input type="password" placeholder="Digite sua Senha" id="senha" required>
+            <i class="ri-lock-line"></i>
+        </div>
+
+        <div class="forgot">
+            <p>Novo por aqui?</p>
+            <a href="signup.html">Cadastre-se</a>
+        </div>
+
+        <div class="btns">
+            <button type="button" onclick="Login()">Entrar</button>
+            <button type="button" class="invisible" onclick="href(this)">Esqueci a Senha</button>
+        </div>
+    </div>
+
+    <script>
+        // Função para verificar a validade do campo de email
+        document.getElementById('email').addEventListener('input', function() {
+            const emailField = document.getElementById('email');
+            const forgotButton = document.querySelector('.invisible');
+
+            if (emailField.validity.valid) {
+                // Torna o botão visível e habilitado
+                forgotButton.classList.add('visible');
+                forgotButton.classList.remove('disabled');
+            } else {
+                // Deixa o botão invisível ou desabilitado
+                forgotButton.classList.remove('visible');
+                forgotButton.classList.add('disabled');
+            }
+        });
+
+    </script>
+</body>
+</html>
