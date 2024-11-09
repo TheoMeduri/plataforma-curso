@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.5.0/remixicon.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
+    <title>Dados Bancários</title>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo-details">
+            <i class="ri-reactjs-line icon"></i>
+            <div class="logo_name">Prog Maker</div>
+            <i class='ri-menu-line' id="btn"></i>
+        </div>
+        <ul class="nav-list">
+          <li>
+             <i class="ri-search-2-line" id="search"></i>
+             <input type="text" id="searchInput" placeholder="Search...">
+             <span class="tooltip">Search</span>
+          </li>
+          <li>
+            <a href="./" id="DashBoard">
+                <i class="ri-dashboard-fill"></i>
+              <span class="links_name">Dashboard</span>
+            </a>
+             <span class="tooltip">Dashboard</span>
+          </li>
+          <li>
+           <a href="#" id="Alunos">
+            <i class="ri-graduation-cap-fill"></i>
+             <span class="links_name">Alunos</span>
+           </a>
+           <span class="tooltip">Alunos</span>
+         </li>
+         <li>
+           <a href="#" id="Mensagens">
+            <i class="ri-chat-1-line"></i>
+             <span class="links_name">Mensagens</span>
+           </a>
+           <span class="tooltip">Mensagens</span>
+         </li>
+         <li>
+           <a href="#" id="Sky IA">
+            <i class="ri-chat-ai-line"></i>
+             <span class="links_name">Sky IA</span>
+           </a>
+           <span class="tooltip">Sky IA</span>
+         </li>
+         <li>
+           <a href="#" id="Calendário">
+            <i class="ri-calendar-event-line"></i>
+             <span class="links_name">Calendário</span>
+           </a>
+           <span class="tooltip">Calendário</span>
+         </li>
+         <li>
+           <a href="#" id="Projetos">
+            <i class="ri-folder-upload-line"></i>
+             <span class="links_name">Projetos</span>
+           </a>
+           <span class="tooltip">Projetos</span>
+         </li>
+         <li>
+           <a href="#" id="Meus Relatórios">
+            <i class="ri-bar-chart-fill"></i>
+             <span class="links_name">Meus Relatórios</span>
+           </a>
+           <span class="tooltip">Meus Relatórios</span>
+         </li>
+         <li>
+            <a href="bank.html" class="active" id="Dados Bancários">
+                <i class="ri-secure-payment-line"></i>
+              <span class="links_name">Dados Bancários</span>
+            </a>
+            <span class="tooltip">Dados Bancários</span>
+          </li>
+         <li>
+           <a href="#" id="Configurações">
+            <i class="ri-settings-4-fill"></i>
+             <span class="links_name">Configurações</span>
+           </a>
+           <span class="tooltip">Configurações</span>
+         </li>
+         <li class="profile">
+             <div class="profile-details">
+               <span id="img">TM</span>
+               <div class="name_job">
+                 <div class="name">Theo Meduri</div>
+                 <div class="job">Dev Programator</div>
+               </div>
+             </div>
+             <i class='ri-logout-box-line' id="log_out"></i>
+         </li>
+        </ul>
+      </div>
+      <section class="home-section">
+          <div class="text">Dados Bancários</div>
+          <div class="content">
+            <div class="infos-bank">
+                <span id="bank-name">Mercado Pago</span>
+                <span id="pix-key"><b>Chave:</b> Email: ••••••••••••@gmail.com</span>
+                <span id="bank-agence"><b>Agência: </b>001</span>
+                <span id="account-type"><b>Tipo de Conta: </b>Corrent Account</span>
+                <hr>
+                <span id="value">R$100,00</span>
+                <button id="solicitar"><i class="ri-pix-line"></i> Sacar</button>
+            </div>
+            <div class="info-connect">
+                <span id="name">Conecte uma Conta Bancária</span>
+                <p>Conecte e receba pagamentos fácil e rápido! A conta será conectada e seus dados também.</p>
+                <button id="connect"><i class="ri-links-line"></i> Conectar</button>
+            </div>
+          </div>
+      </section>
+      <script>
+        let sidebar = document.querySelector(".sidebar");
+        let closeBtn = document.querySelector("#btn");
+        let searchBtn = document.getElementById("search");
+        let searchInput = document.getElementById("searchInput");
+        let menuItems = document.querySelectorAll(".nav-list li a");
+
+        closeBtn.addEventListener("click", () => {
+            sidebar.classList.toggle("open");
+            
+            // Limpa o campo de entrada
+            searchInput.value = "";
+            
+            // Restaura o ícone para a lupa
+            searchBtn.classList.remove("ri-close-line");
+            searchBtn.classList.add("ri-search-2-line");
+
+            // Esconde todos os itens da lista quando o closeBtn é clicado
+            menuItems.forEach(item => {
+                item.style.display = "flex"; // Esconde o item
+            });
+        });
+
+        searchBtn.addEventListener("click", () => {
+            sidebar.classList.toggle("open");
+
+            if (!sidebar.classList.contains("open")) {
+                searchInput.value = "";
+                searchBtn.classList.remove("ri-close-line");
+                searchBtn.classList.add("ri-search-2-line");
+                // Esconde todos os itens da lista quando o closeBtn é clicado
+                menuItems.forEach(item => {
+                    item.style.display = "flex"; // Esconde o item
+                });
+            }
+        });
+
+        // Lógica para trocar o ícone baseado no conteúdo do campo de busca
+        searchInput.addEventListener("input", () => {
+            if (searchInput.value === "") {
+                searchBtn.classList.replace("ri-close-line", "ri-search-2-line");
+                // Esconde todos os itens da lista quando o closeBtn é clicado
+                menuItems.forEach(item => {
+                    item.style.display = "flex"; // Esconde o item
+                });
+            } else {
+                searchBtn.classList.replace("ri-search-2-line", "ri-close-line");
+            }
+
+            // Filtro de itens baseado no texto digitado
+            let searchText = searchInput.value.toLowerCase(); // Converte o texto para minúsculo
+            menuItems.forEach(item => {
+                let itemText = item.textContent.toLowerCase(); // Pega o texto do item
+                if (itemText.includes(searchText)) {
+                    item.style.display = ""; // Mostra o item
+                } else {
+                    item.style.display = "none"; // Esconde o item
+                }
+            });
+        });
+
+        // Quando clicar no ícone de fechar, limpa o campo de busca e volta para a lupa
+        searchBtn.addEventListener("click", () => {
+            if (searchInput.value !== "") {
+                searchInput.value = ""; // Limpa o campo de entrada
+                searchBtn.classList.replace("ri-close-line", "ri-search-2-line");
+            }
+        });
+      </script>
+</body>
+</html>

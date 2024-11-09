@@ -36,7 +36,7 @@
             <i class="ri-mail-line"></i>
         </div>
         <div class="form-group">
-            <label for="tel">telefone</label>
+            <label for="tel">Telefone</label>
             <input type="tell" placeholder="Digite seu Telefone" id="tel" required>
             <i class="ri-phone-line"></i>
         </div>
@@ -74,14 +74,25 @@
         });
 
         const sunToggle = document.getElementById('sun');
-        const moonToggle = document.getElementById('moon');
+    const moonToggle = document.getElementById('moon');
 
-        sunToggle.addEventListener('click', () => {
-            let isSun = sunToggle.classList.toggle('active');
-            if(isSun) {
-                
-            }
-        })
+    sunToggle.addEventListener('click', () => {
+      if (!sunToggle.classList.contains('active')) {
+        // Ativa o modo claro
+        document.body.classList.remove('dark-mode');
+        sunToggle.classList.add('active');
+        moonToggle.classList.remove('active');
+      }
+    });
+
+    moonToggle.addEventListener('click', () => {
+      if (!moonToggle.classList.contains('active')) {
+        // Ativa o modo escuro
+        document.body.classList.add('dark-mode');
+        moonToggle.classList.add('active');
+        sunToggle.classList.remove('active');
+      }
+    });
     </script>
 </body>
 </html>
